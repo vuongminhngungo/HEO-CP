@@ -14,10 +14,12 @@ h6 {
 }
 html {
   font-size: 62.5%;
+  scroll-behavior: smooth;
 }
 $primaryColor: #02673d;
 $seconDaryColor: #000958;
 body {
+  position: relative;
   font-size: 1.6rem;
   font-family: "Playfair Display", serif;
   background-color: #f2f2f2;
@@ -51,19 +53,7 @@ header.header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      .header__logo {
-        display: flex;
-        align-items: center;
-        text-decoration: none;
-        color: $primaryColor;
-        font-weight: 700;
-        max-width: 320px;
-        text-align: center;
-        line-height: 1.4;
-        .logo-img {
-          width: 100px;
-        }
-      }
+
       .header__right {
         .header__contact {
           .contact-lists {
@@ -76,6 +66,9 @@ header.header {
               color: #717171;
               font-size: 1.4rem;
               line-height: 1;
+              &:hover {
+                color: $primaryColor;
+              }
             }
             .contact-search {
             }
@@ -125,8 +118,31 @@ header.header {
     }
   }
 }
+.backToTop {
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 80px;
+  right: 80px;
+  border-radius: 50%;
+  background-color: rgba($color: $primaryColor, $alpha: 0.4);
+  z-index: 10;
+  color: #fff;
+  opacity: 0;
+  &:hover {
+    background-color: rgba($color: $primaryColor, $alpha: 1);
+  }
+}
+.btnTop-active {
+  opacity: 1;
+}
 main {
   padding-top: 100px;
+  position: relative;
+
   .header-banner {
     .banner-wrapper {
       border-top: 4px solid $primaryColor;
@@ -225,7 +241,7 @@ main {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 134px;
+        padding: 70px;
         background-color: #ebeef1;
         .introduct-content {
           color: $primaryColor;
@@ -282,7 +298,6 @@ main {
         align-items: center;
         .management-content {
           position: relative;
-          width: 700px;
           padding: 140px 70px;
           background-color: $primaryColor;
           border-radius: 4px;
@@ -317,7 +332,7 @@ main {
           }
         }
         .management-media {
-          margin-left: -200px;
+          margin-left: -300px;
           .management-img {
             object-fit: cover;
           }
@@ -355,7 +370,7 @@ main {
             border-top-right-radius: 12px;
           }
           .card-content {
-            padding: 15px 10px;
+            padding: 15px 30px;
             height: 260px;
             .card-heading {
               font-size: 2.8rem;
@@ -427,7 +442,6 @@ main {
             width: 100%;
             height: 400px;
             overflow: hidden;
-            // background-color: #3cb371;
             .staff-item__img {
               display: block;
               width: 100%;

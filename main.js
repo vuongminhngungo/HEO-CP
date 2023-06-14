@@ -10,6 +10,7 @@ const listDots = [...bannerDot];
 
 let positionX = 0;
 let index = 0;
+
 function changeBanner() {
   positionX = positionX - itemWidth;
   index++;
@@ -25,3 +26,34 @@ function changeBanner() {
   listDots[index].classList.add("active");
 }
 setInterval(changeBanner, 4000);
+
+document.addEventListener("DOMContentLoaded", function () {
+  const links = document.querySelectorAll('a[href^="#"]');
+  links.forEach(function (link) {
+    link.addEventListener("click", function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute("href"));
+      if (target) {
+        target.scrollIntoView({
+          behavior: "smooth",
+        });
+      }
+    });
+  });
+});
+
+const btnTop = document.querySelector(".backToTop");
+function backToTop() {
+  window.addEventListener("scroll", function () {
+    if (window.pageYOffset > 300) {
+      btnTop.classList.add("btnTop-active");
+    } else {
+      btnTop.classList.remove("btnTop-active");
+    }
+  });
+  btnTop.addEventListener("click", function (e) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+backToTop();
